@@ -1,0 +1,214 @@
+body,
+html {
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* THEME VARIABLES */
+.theme-neon {
+  --bg: rgba(0, 0, 0, 0.35);
+  --accent: #8b5cf6;
+  --text: #ffffff;
+}
+.theme-night {
+  --bg: rgba(15, 23, 42, 0.55);
+  --accent: #38bdf8;
+  --text: #f1f5f9;
+}
+.theme-cyber {
+  --bg: rgba(9, 9, 11, 0.65);
+  --accent: #ee0e0e;
+  --text: #ffffff;
+}
+.theme-emerald {
+  --bg: rgba(6, 78, 59, 0.5);
+  --accent: #10b981;
+  --text: #ecfdf5;
+}
+.theme-sunset {
+  --bg: rgba(120, 53, 15, 0.5);
+  --accent: #f59e0b;
+  --text: #fffbeb;
+}
+.theme-rose {
+  --bg: rgba(136, 19, 55, 0.5);
+  --accent: #f43f5e;
+  --text: #fff1f2;
+}
+
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.6);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#bgImageLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(55px) saturate(190%) brightness(0.55);
+  transform: scale(1.4);
+  transition: background-image 0.8s ease-in-out, opacity 0.6s ease;
+  opacity: 0;
+}
+#bgImageLayer.active {
+  opacity: 1;
+}
+
+#bgOverlayLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--bg);
+  backdrop-filter: blur(8px);
+  transition: background 0.5s ease;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-actions {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.glass-card:hover .top-actions {
+  opacity: 1;
+}
+
+.top-info {
+  padding: 12px;
+  gap: 12px;
+  transition: all 0.8s ease;
+  display: flex;
+  align-items: center;
+}
+.vinyl-box {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+#vinylContainer {
+  will-change: transform, filter;
+  transform-origin: center;
+  transition: all 0.6s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+#vinylContainer.paused {
+  filter: brightness(0.7) saturate(0.8);
+  transform: scale(0.96);
+}
+
+.spin {
+  animation: vinylSpin 10s linear infinite;
+}
+@keyframes vinylSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.controls-glass {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 10px 10px 8px;
+  margin: 0 8px 8px;
+  max-height: 96px;
+  transition: all 0.6s ease;
+}
+
+.bottom-bar {
+  height: 6px;
+  margin: 0 12px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.bottom-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #fff);
+  transition: width 0.4s ease;
+}
+
+.minimized-mode {
+  border-radius: 12px !important;
+}
+.minimized-mode .controls-glass,
+.minimized-mode .bottom-bar,
+.minimized-mode .top-actions {
+  opacity: 0 !important;
+  display: none !important;
+}
+.minimized-mode .top-info {
+  padding: 12px 16px !important;
+}
+
+#songTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  font-weight: 900;
+  color: var(--text);
+}
+#songArtist {
+  color: var(--text);
+}
+
+.btn-hover {
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-hover:hover {
+  background: rgba(255, 255, 255, 0.15);
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+
+input[type="range"] {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  height: 5px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 4px;
+  border: 2px solid white;
+}

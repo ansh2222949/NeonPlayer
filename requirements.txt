@@ -1,0 +1,6 @@
+pywebview
+winsdk
+flask
+flask-socketio
+keyboard
+Pillow

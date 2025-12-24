@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Media Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="theme-neon" id="appBody">
+    <div
+      class="flex items-center justify-center h-full w-full p-0 bg-transparent"
+      onmousemove="handleActivity()"
+    >
+      <div id="mainCard" class="glass-card rounded-xl">
+        <div id="bgImageLayer"></div>
+        <div id="bgOverlayLayer"></div>
+
+        <div class="content-wrapper">
+          <div class="top-actions flex space-x-2">
+            <button
+              onclick="nextTheme()"
+              class="btn-hover w-7 h-7"
+              title="Change Theme"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                ></path>
+              </svg>
+            </button>
+            <button
+              onclick="togglePin()"
+              id="pinBtn"
+              class="btn-hover w-7 h-7"
+              title="Pin Window"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="12" y1="17" x2="12" y2="22"></line>
+                <path
+                  d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"
+                ></path>
+              </svg>
+            </button>
+            <button
+              onclick="window.pywebview.api.close_app()"
+              class="btn-hover w-7 h-7 hover:text-red-500"
+              title="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="top-info">
+            <div class="vinyl-box">
+              <div
+                id="vinylContainer"
+                class="w-full h-full border border-white/20 bg-zinc-900"
+              >
+                <img
+                  id="vinylThumb"
+                  src=""
+                  class="w-full h-full object-cover hidden"
+                />
+                <div
+                  id="vinylDefault"
+                  class="w-full h-full flex items-center justify-center text-3xl opacity-20"
+                >
+                  🎵
+                </div>
+              </div>
+            </div>
+            <div class="flex-grow min-w-0">
+              <p id="songTitle" class="text-sm sm:text-base truncate">
+                Syncing...
+              </p>
+              <p
+                id="songArtist"
+                class="text-[10px] opacity-80 truncate uppercase tracking-tighter"
+              >
+                Neon Media
+              </p>
+            </div>
+          </div>
+
+          <div class="flex-grow flex flex-col justify-end px-4 controls-glass">
+            <input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              oninput="onSeek(this.value)"
+              onchange="onSeekEnd(this.value)"
+              class="w-full"
+            />
+            <div class="flex items-center justify-evenly w-full mt-2">
+              <button
+                onclick="window.pywebview.api.control('prev')"
+                class="btn-hover w-10 h-10"
+              >
+                ⏮
+              </button>
+              <button
+                onclick="sendAction('play_pause')"
+                id="playPauseIcon"
+                class="btn-hover w-12 h-12 text-xl"
+              >
+                ▶
+              </button>
+              <button
+                onclick="window.pywebview.api.control('next')"
+                class="btn-hover w-10 h-10"
+              >
+                ⏭
+              </button>
+            </div>
+          </div>
+
+          <div class="px-4 pb-2">
+            <div class="bottom-bar">
+              <div id="miniProgress" class="bottom-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
