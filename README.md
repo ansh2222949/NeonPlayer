@@ -58,17 +58,16 @@ Thread-safe Windows API access
 
 Minimal CPU & memory usage
 
+
+
+```text
 Python (Backend)
 ├─ MediaController
 │  └─ Reads system media using Windows Media APIs
-│
 ├─ PinHandler
-│  └─ Controls Always-on-Top window behavior
-│
+│  └─ Always-on-top window logic
 └─ pywebview
-   └─ Bridges Python ↔ JavaScript
-        ↓
-Frontend (HTML + CSS + JavaScript)
+   └─ Python ↔ JavaScript bridge
 
 
 
