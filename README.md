@@ -58,19 +58,18 @@ Thread-safe Windows API access
 
 Minimal CPU & memory usage
 
-🧠 How It Works (Architecture)
 Python (Backend)
-│
 ├─ MediaController
-│   └─ Reads system media using Windows Media APIs
+│  └─ Reads system media using Windows Media APIs
 │
 ├─ PinHandler
-│   └─ Controls Always-on-Top window behavior
+│  └─ Controls Always-on-Top window behavior
 │
 └─ pywebview
-    └─ Bridges Python ↔ JavaScript
-         ↓
-Frontend (HTML + CSS + JS)
+   └─ Bridges Python ↔ JavaScript
+        ↓
+Frontend (HTML + CSS + JavaScript)
+
 
 
 Python handles system media, window behavior, and OS-level controls
@@ -84,18 +83,18 @@ Communication happens via pywebview.api
 📁 Project Structure
 NeonPlayer/
 ├── core/
-│   ├── media_control.py      # Windows media session controller
-│   ├── pin_logic.py          # Always-on-top window logic
+│   ├── media_control.py    # Windows media session controller
+│   ├── pin_logic.py        # Always-on-top window logic
 │   └── __init__.py
 │
 ├── web/
-│   ├── index.html            # UI layout
-│   ├── script.js             # UI logic & animations
-│   └── style.css             # Glassmorphism & themes
+│   ├── index.html          # UI layout
+│   ├── script.js           # UI logic & animations
+│   └── style.css           # Glassmorphism & themes
 │
-├── main.py                   # App entry point
-├── app_icon.ico              # Application icon
-├── NeonPlayer.spec           # PyInstaller config
-├── build.bat                 # Build script
-├── requirements.txt          # Python dependencies
+├── main.py                 # Application entry point
+├── app_icon.ico            # Application icon
+├── NeonPlayer.spec         # PyInstaller configuration
+├── build.bat               # Build script
+├── requirements.txt        # Python dependencies
 └── README.md
