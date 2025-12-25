@@ -68,7 +68,7 @@ Python (Backend)
 │  └─ Always-on-top window logic
 └─ pywebview
    └─ Python ↔ JavaScript bridge
-
+```
 
 
 Python handles system media, window behavior, and OS-level controls
@@ -78,7 +78,7 @@ JavaScript handles UI logic, animations, and user interactions
 CSS provides glassmorphism, blur effects, and transitions
 
 Communication happens via pywebview.api
-
+```text
 📁 Project Structure
 NeonPlayer/
 ├── core/
