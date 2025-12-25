@@ -1,99 +1,159 @@
-NeonPlayer — Floating System Media Controller (Windows)
+<div align="center">
+  <h1>🎧 NeonPlayer</h1>
+  <h3>Floating System Media Controller for Windows</h3>
+  <p>
+    <b>Glassmorphism UI • System Sync • Always-on-Top</b>
+  </p>
 
-NeonPlayer is a lightweight, floating desktop media controller for Windows that automatically syncs with the system-wide media session (Spotify, YouTube, VLC, browser media, etc.) and provides a modern glassmorphism UI with real-time playback controls.
+  <p>
+    <img src="https://img.shields.io/badge/Platform-Windows%2010%2F11-blue?style=for-the-badge&logo=windows" alt="Windows">
+    <img src="https://img.shields.io/badge/Backend-Python%20%2B%20WinRT-yellow?style=for-the-badge&logo=python" alt="Python">
+    <img src="https://img.shields.io/badge/Frontend-HTML%20%2F%20JS-orange?style=for-the-badge&logo=html5" alt="HTML/JS">
+    <img src="https://img.shields.io/badge/Library-pywebview-green?style=for-the-badge" alt="pywebview">
+  </p>
 
-Built using Python + pywebview + Windows Media APIs, NeonPlayer runs as a small always-on-top widget without interrupting your workflow.
+  <br>
 
-✨ Features
+  <img src="<img width="1570" height="804" alt="Screenshot 2025-12-23 205503" src="https://github.com/user-attachments/assets/72b9f693-f6aa-4118-ba56-ba4658755f24" />
+" alt="NeonPlayer Preview" width="800">
 
-🎧 System-wide Media Sync
+  <br><br>
+</div>
 
-Automatically detects currently playing media
+---
 
-Works with Spotify, browsers, VLC, and other Windows media sources
+## 🎵 What is NeonPlayer?
 
-▶️ Playback Controls
+**NeonPlayer** is a lightweight, floating desktop widget that automatically syncs with your Windows system media session.
 
-Play / Pause
+Whether you are listening to **Spotify, YouTube (Browser), VLC, or Apple Music**, NeonPlayer detects it instantly and gives you a beautiful, transparent glass control panel. It stays on top of your windows so you never have to Alt-Tab to skip a song.
 
-Next / Previous track
+---
 
-Seek using progress slider
+## ✨ Key Features
 
-🎚 Live Progress & Metadata
+| Feature | Description |
+| :--- | :--- |
+| 🎧 **System Sync** | Automatically connects to Spotify, Chrome, Edge, VLC, etc. |
+| 🪟 **Glass UI** | Modern **Glassmorphism** design with blur effects. |
+| 📌 **Always-on-Top** | Pin the widget so it floats over other apps. |
+| 🎨 **6+ Themes** | Neon, Night, Cyber, Emerald, Sunset, Rose. |
+| 💎 **Dynamic BG** | Album art is blurred and animated as the background. |
+| ⚡ **Performance** | Asynchronous polling ensures 0% lag or CPU load. |
 
-Song title & artist
+---
 
-Playback progress & duration
+## 🏗️ Architecture
 
-Real-time play/pause state detection
+NeonPlayer uses a hybrid architecture to combine the power of Python with the beauty of Web Technologies.
 
-🪟 Floating Widget UI
+```mermaid
+graph TD;
+    Windows_OS[Windows Media API]-->Python_Backend;
+    Python_Backend[Python Core]-->|JSON Data|Bridge[pywebview Bridge];
+    Bridge-->Frontend_UI[HTML/JS Interface];
+    Frontend_UI-->|User Clicks|Bridge;
+    Bridge-->|Media Commands|Python_Backend;
+    Python_Backend-->Windows_OS;
 
-Frameless & transparent window
+```
 
-Capsule-style compact mode
+* **Python (Backend):** Handles WinRT (Windows Runtime) APIs to read media status.
+* **JavaScript (Frontend):** Manages animations, progress bars, and theme switching.
+* **pywebview:** Acts as the bridge between Python logic and the UI.
 
-Auto-minimize on inactivity
+---
 
-📌 Always-on-Top Mode
-
-Pin/unpin the widget using a single click
-
-🎨 Multiple Themes
-
-Neon, Night, Cyber, Emerald, Sunset, Rose
-
-One-click theme switching
-
-💎 Dynamic Background
-
-Album art is blurred and used as animated background
-
-⚡ High Performance
-
-Async media polling (non-blocking)
-
-Thread-safe Windows API access
-
-Minimal CPU & memory usage
-
-
+## 📂 Project Structure
 
 ```text
-Python (Backend)
-├─ MediaController
-│  └─ Reads system media using Windows Media APIs
-├─ PinHandler
-│  └─ Always-on-top window logic
-└─ pywebview
-   └─ Python ↔ JavaScript bridge
+NeonPlayer/
+├── core/
+│   ├── media_control.py    # Windows Media Transport Controls (WinRT)
+│   ├── pin_logic.py        # Window pinning & positioning logic
+│   └── __init__.py
+│
+├── web/                    # The Frontend Layer
+│   ├── index.html          # Main UI Structure
+│   ├── script.js           # Logic for UI updates & bridge calls
+│   └── style.css           # Glassmorphism styles & animations
+│
+├── main.py                 # Entry point (Starts Python & WebView)
+├── app_icon.ico            # App Icon
+├── build.bat               # One-click build script
+└── requirements.txt        # Python Dependencies
+
+```
+
+---
+
+## 🚀 How to Run
+
+### 1️⃣ Prerequisites
+
+* Windows 10 or Windows 11 (Required for Media APIs).
+* Python 3.8+.
+
+### 2️⃣ Installation
+
+```bash
+# Clone the repository
+git clone [https://github.com/YourUsername/NeonPlayer.git](https://github.com/YourUsername/NeonPlayer.git)
+cd NeonPlayer
+
+# Create Virtual Environment (Optional but Recommended)
+python -m venv venv
+venv\Scripts\activate
+
+# Install Dependencies
+pip install -r requirements.txt
+
+```
+
+### 3️⃣ Start App
+
+```bash
+python main.py
+
+```
+
+---
+
+## 📦 How to Build (.exe)
+
+To create a standalone executable file that runs without Python installed:
+
+1. Make sure you have `pyinstaller` installed:
+```bash
+pip install pyinstaller
+
 ```
 
 
-Python handles system media, window behavior, and OS-level controls
+2. Run the build script:
+```bash
+build.bat
 
-JavaScript handles UI logic, animations, and user interactions
+```
 
-CSS provides glassmorphism, blur effects, and transitions
 
-Communication happens via pywebview.api
-```text
-📁 Project Structure
-NeonPlayer/
-├── core/
-│   ├── media_control.py    # Windows media session controller
-│   ├── pin_logic.py        # Always-on-top window logic
-│   └── __init__.py
-│
-├── web/
-│   ├── index.html          # UI layout
-│   ├── script.js           # UI logic & animations
-│   └── style.css           # Glassmorphism & themes
-│
-├── main.py                 # Application entry point
-├── app_icon.ico            # Application icon
-├── NeonPlayer.spec         # PyInstaller configuration
-├── build.bat               # Build script
-├── requirements.txt        # Python dependencies
-└── README.md
+3. Find your app in the `dist/` folder.
+
+---
+
+## 🎨 Controls & Shortcuts
+
+* **Play/Pause:** Click the center button.
+* **Seek:** Drag the progress bar.
+* **Pin/Unpin:** Click the 📌 icon to toggle "Always on Top".
+* **Change Theme:** Click the palette icon to cycle through themes.
+* **Minimize:** The widget auto-compacts when media is paused for too long (configurable).
+
+---
+
+<div align="center">
+<b>Built with ❤️ using Python & WinRT</b>
+</div>
+
+```
+
