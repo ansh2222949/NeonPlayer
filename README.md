@@ -97,9 +97,6 @@ NeonPlayer/
 ### 2️⃣ Installation
 
 ```bash
-# Clone the repository
-git clone [https://github.com/YourUsername/NeonPlayer.git](https://github.com/YourUsername/NeonPlayer.git)
-cd NeonPlayer
 
 # Create Virtual Environment (Optional but Recommended)
 python -m venv venv
