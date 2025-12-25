@@ -14,7 +14,7 @@
 
   <br>
 
-   "<img width="1570" height="804" alt="Screenshot 2025-12-23 205503" src="https://github.com/user-attachments/assets/72b9f693-f6aa-4118-ba56-ba4658755f24" />
+   <img width="1570" height="804" alt="Screenshot 2025-12-23 205503" src="https://github.com/user-attachments/assets/72b9f693-f6aa-4118-ba56-ba4658755f24" />
 " alt="NeonPlayer Preview" width="800">
 
   <br><br>
