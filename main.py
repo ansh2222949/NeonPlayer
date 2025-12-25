@@ -3,8 +3,6 @@ import os
 import sys
 from core.media_control import MediaController
 from core.pin_logic import PinHandler
-
-# Core instances initialized once
 mc = MediaController()
 ph = PinHandler()
 window = None
@@ -68,22 +66,17 @@ def start_app():
         url=html_path,
         js_api=Api(),
         
-        # Dimensions (Capsule Width Locked)
+        # Dimensions
         width=310, 
         height=220,
         min_size=(310, 80),
-        
-        # Ghost Mode Settings
-        frameless=True,       # ❌ Removes OS title bar
-        transparent=True,     # ❌ 100% Invisible container
-        background_color='#000000', # ✅ Fixed: Standard hex triplet
-        
-        easy_drag=True,       # ✅ Drag window from anywhere
-        on_top=False,         # Managed by toggle_pin
-        text_select=False     # Professional feel
+        frameless=True,       
+        transparent=True,     
+        background_color='#000000', 
+        easy_drag=True,       
+        on_top=False,         
+        text_select=False     
     )
-
-    # 🛠️ GUI ENGINE: 'edgehtml' is most stable for transparency on Windows
     webview.start(gui='edgehtml', debug=False)
 
 # -------------------------------
